@@ -1,12 +1,57 @@
 # GitHub 上传与发布
 
-更新：2026-10-26。当前代码 0.2.0，本地 97 项自动化检查及已记录的实机流程通过，尚无同步的正式下载包、Developer ID 签名或公证。
+更新：2026-10-26。当前代码 0.2.0，源码仓库为 [oiiizhou/QingYou](https://github.com/oiiizhou/QingYou)。本地已生成 Apple Silicon + Intel 通用测试包，97 项自动化检查及已记录的实机流程通过；GitHub Releases 尚未发布该包，尚无 Developer ID 签名或公证。
+
+## 在网页上传当前测试安装包
+
+安装包通过 **Releases** 分发；不要将 DMG、ZIP 提交到源码目录，也不需要修改 `.gitignore`。
+
+1. 先将准备发布的源码与文档更新提交到 `main`，核对该提交对应本地测试包的功能。当前 README 更新不改变应用二进制，无需为排版重新打包。
+2. 打开 [新建 Release](https://github.com/oiiizhou/QingYou/releases/new)。如果先进入 Releases 页面，点击 **Create a new release** 或 **Draft a new release**。
+3. 创建标签 **`preview-0.2.0`**，Target 选择 **`main`**，标题填写 **`轻右 0.2.0 · 首个公开测试版`**。
+4. 在说明区域填写下面的发布说明。
+5. 将工程目录 `dist/QingYou-0.2.0-test-20261026/` 中的以下四个文件拖入附件区域：
+   - `QingYou-0.2.0-universal-test-20261026.dmg`，推荐给普通用户。
+   - `QingYou-0.2.0-universal-test-20261026.zip`，应用 ZIP 备用包。
+   - `SHA256SUMS.txt`。
+   - `安装测试说明.txt`。
+6. 勾选 **This is a pre-release**，等附件上传完成后检查名称和说明，再点击 **Publish release**。也可以先点 **Save draft** 保存草稿。
+
+手动上传使用 `preview-0.2.0` 标签，不会触发现有的 `v*` 自动打包发布流程。之后的更新使用新标签，不覆盖已经分享的测试包。发布后，将版本页面链接发给用户；GitHub 自动附带的 **Source code (zip)** 和 **Source code (tar.gz)** 是源码，不是应用安装包。
+
+发布完成后，将工程 README 的“尚未发布／尚待上传”状态改为实际发布状态，并补充该版本的下载链接；运行 `python3 scripts/sync_readme.py` 同步外层首页，再提交文档更新。
+
+流程依据 [GitHub 官方发布说明](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)。本指南只说明步骤，不会代替维护者创建或公开 Release。
+
+### 可直接填写的发布说明
+
+```markdown
+轻右的首个公开测试版：将新建文档、图片处理与 PDF 工具放进 Finder 右键菜单。
+
+### 下载与安装
+- 推荐下载 QingYou-0.2.0-universal-test-20261026.dmg。
+- 打开 DMG，将 QingYou.app 拖入「应用程序」，启动后通过「管理扩展」开启 Finder 扩展。
+- 不要下载 Source code，除非你想自行编译。
+
+### 环境与验证
+- macOS 13 及以上；PDF 压缩需要 macOS 13.4 及以上。
+- 通用包包含 Apple Silicon 与 Intel 架构；目前实机验收为 Apple Silicon / macOS 26.3，Intel 仍待实机验证。
+- 本地 97 项自动化检查通过，部分图片与 PDF 流程已实测。
+
+### 测试版状态
+- 使用 ad-hoc 签名，尚未完成 Developer ID 签名与 Apple 公证，下载后首次打开可能遇到系统来源检查。
+- 新图片／页面列表请先用上下箭头排序；新建文件可按 Return 改名，自动进入改名仍待复测。
+- 另一台 Mac 的完整下载安装流程尚待验证，欢迎通过 Issues 反馈。
+- PDF 重写不保证保留书签、交互表单或数字签名，原件会保留。
+
+附件中的 SHA256SUMS.txt 可用于核对 DMG 与 ZIP。更多功能、限制与验证范围请参阅仓库 README。
+```
 
 ## 先上传源码
 
 当前工作区 Git 根目录在外层，源码位于 `QingYou/`。推荐保留现有结构整体上传；外层 README 已同步，根工作流会定位工程。若另建独立仓库，可在工作区之外复制 `QingYou/` 的源码内容（排除 build、dist 等），再初始化；不要在现有仓库中创建嵌套 Git 仓库。
 
-本次文档准备不创建远程仓库、不提交、不推送。上传前先确定 GitHub 账号、仓库名称和公开／私有可见性。
+本项目源码已经上传。下面保留首次接入本地仓库的通用步骤；已有远程与提交时，不要重复初始化。
 
 ### 本地检查
 
@@ -42,7 +87,7 @@ git push -u origin main
 仓库描述可用：**原生 macOS Finder 右键工具：新建文档、粘贴为文件、图片处理与 PDF 工作台，Swift 编写，MIT 开源。**
 建议主题词：`macos`、`swift`、`swiftui`、`finder-extension`、`productivity`、`pdf`、`image-processing`。分享封面可选 `QingYou/docs/assets/social-preview.png`。
 
-## CI 与下载包是后续步骤
+## 通过 CI 自动构建与发布
 
 现有工作流在 main 推送、PR 或手动触发时校验文档／模板、运行测试、构建双架构、打包并上传 Actions artifact。工作流配置存在不等于云端运行已通过，本地记录不能替代 CI 状态。
 
