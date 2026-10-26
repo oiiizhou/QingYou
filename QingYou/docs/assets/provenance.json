@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-26",
+  "kind": "native screenshots, no AI editing",
+  "files": {
+    "current-image-resize.png": {
+      "origin": "Isolated native review app using production UI/model code; self-generated JPEG fixtures.",
+      "sha256": "8036743d50177625f11d6202e35ac4d87c9034df2e06bb7b7bbcfced7239d5ee"
+    },
+    "current-pdf-organize.png": {
+      "origin": "Same isolated app; self-generated six-page PDF fixture.",
+      "sha256": "bb4012c0239bc61c7e6aa6577d27810063715242a8c6d33c04b18fd224902c00"
+    },
+    "current-image-dark.png": {
+      "origin": "Same isolated app; dark compact window and generated JPEG fixtures.",
+      "sha256": "70bd8545f270131b39835b361813d9ed4cecc08b0132eb3562c3705670248033"
+    },
+    "current-images-pdf.png": {
+      "origin": "Same isolated app; generated JPEG fixtures in PDF composition.",
+      "sha256": "1d9999cbf956890863ebec62e966b1496c7131cc670136300e4593693146315d"
+    },
+    "current-pdf-compress.png": {
+      "origin": "Same isolated app; generated six-page PDF, actual system optimization result.",
+      "sha256": "d022e40feabeaf3a6f3878c95d0f605d775304747a23c8c8a14fc8d61818899c"
+    }
+  }
+}

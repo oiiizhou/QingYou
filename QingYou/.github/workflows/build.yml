@@ -1,0 +1,67 @@
+name: Build and test
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Locate QingYou project
+        id: project
+        shell: bash
+        run: |
+          if [ -f QingYou/Resources/App-Info.plist ]; then
+            echo "directory=QingYou" >> "$GITHUB_OUTPUT"
+          elif [ -f Resources/App-Info.plist ]; then
+            echo "directory=." >> "$GITHUB_OUTPUT"
+          else
+            echo "找不到轻右项目目录"
+            exit 1
+          fi
+      - name: Verify templates and metadata
+        working-directory: ${{ steps.project.outputs.directory }}
+        run: |
+          python3 scripts/verify_docs.py
+          python3 scripts/verify_project.py
+          python3 scripts/verify_templates.py
+      - name: Test file operations and media tools
+        working-directory: ${{ steps.project.outputs.directory }}
+        run: bash scripts/test.sh
+      - name: Build Apple Silicon and Intel
+        working-directory: ${{ steps.project.outputs.directory }}
+        run: ARCHS="arm64 x86_64" bash scripts/build.sh
+      - name: Package
+        working-directory: ${{ steps.project.outputs.directory }}
+        run: bash scripts/package.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: QingYou-macOS
+          path: ${{ steps.project.outputs.directory }}/dist/*
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: macos
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: QingYou-macOS
+          path: dist
+      - name: Publish unsigned preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          NOTES="docs/RELEASE_NOTES.md"
+          if [ -f QingYou/docs/RELEASE_NOTES.md ]; then NOTES="QingYou/$NOTES"; fi
+          gh release create "$RELEASE_TAG" dist/* --title "轻右 $RELEASE_TAG · 预览版" --notes-file "$NOTES" --prerelease
+        # GitHub 预览版使用本地签名，正式公证版本由发布者单独构建。

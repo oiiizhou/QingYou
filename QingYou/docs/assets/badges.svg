@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="36" viewBox="0 0 1050 36">
+  <style>text{font-family:"SFMono-Regular","Menlo","DejaVu Sans Mono",monospace;font-size:11px;letter-spacing:.35px}</style>
+  <g fill="#10242B" stroke="#315159">
+    <rect x=".5" y=".5" width="150" height="33" rx="7"/>
+    <rect x="162.5" y=".5" width="150" height="33" rx="7"/>
+    <rect x="324.5" y=".5" width="214" height="33" rx="7"/>
+    <rect x="550.5" y=".5" width="114" height="33" rx="7"/>
+    <rect x="676.5" y=".5" width="184" height="33" rx="7"/>
+    <rect x="872.5" y=".5" width="176" height="33" rx="7"/>
+  </g>
+  <g fill="#B8E5D7" text-anchor="middle">
+    <text x="75" y="21">macOS 13+</text>
+    <text x="237" y="21">Swift 6.2</text>
+    <text x="431" y="21">arm64 + x86_64</text>
+    <text x="607" y="21">MIT</text>
+    <text x="768" y="21">77 TESTS PASSED</text>
+    <text x="960" y="21" fill="#DCC78D">0.2.0 PREVIEW</text>
+  </g>
+</svg>

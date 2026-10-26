@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="252" viewBox="0 0 1280 252" fill="none">
+  <defs>
+    <linearGradient id="bg" x2="1280" y2="252" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101F28"/><stop offset="1" stop-color="#09151D"/>
+    </linearGradient>
+    <style>
+      .sans{font-family:"Inter","Arial","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+      .mono{font-family:"SFMono-Regular","Menlo","DejaVu Sans Mono",monospace}
+    </style>
+  </defs>
+  <rect width="1280" height="252" rx="22" fill="url(#bg)"/>
+  <text class="mono" x="42" y="43" fill="#6B9896" font-size="11" letter-spacing="2.4">THREE STEPS. THAT'S IT.</text>
+  <g>
+    <rect x="40" y="73" width="362" height="136" rx="14" fill="#142B32" stroke="#29454B"/>
+    <text class="mono" x="64" y="104" fill="#70DFC1" font-size="12" letter-spacing="1">01 / SELECT</text>
+    <text class="sans" x="64" y="145" fill="#E0F4EC" font-size="23" font-weight="600">选中文件或目录</text>
+    <text class="sans" x="64" y="178" fill="#8AABA8" font-size="15">Finder 右键，或从工具箱选择。</text>
+  </g>
+  <path d="M415 141H441M434 134L441 141L434 148" stroke="#6DAB99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="458" y="73" width="362" height="136" rx="14" fill="#142B32" stroke="#29454B"/>
+    <text class="mono" x="482" y="104" fill="#70DFC1" font-size="12" letter-spacing="1">02 / CHOOSE</text>
+    <text class="sans" x="482" y="145" fill="#E0F4EC" font-size="23" font-weight="600">找到这次要做的事</text>
+    <text class="sans" x="482" y="178" fill="#8AABA8" font-size="15">按类型显示工具，路径一键拷贝。</text>
+  </g>
+  <path d="M833 141H859M852 134L859 141L852 148" stroke="#6DAB99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="876" y="73" width="362" height="136" rx="14" fill="#142B32" stroke="#29454B"/>
+    <text class="mono" x="900" y="104" fill="#70DFC1" font-size="12" letter-spacing="1">03 / DONE</text>
+    <text class="sans" x="900" y="145" fill="#E0F4EC" font-size="23" font-weight="600">结果留在你的 Mac</text>
+    <text class="sans" x="900" y="178" fill="#8AABA8" font-size="15">本地处理，完成后查看操作记录。</text>
+  </g>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" fill="none">
+<title>轻右 QingYou — 文件之间，一切顺手。</title>
+<desc>深青与薄荷绿的品牌插画，展示文档、路径与 PDF 工具。此图不是软件界面截图。</desc>
+<defs>
+<linearGradient id="bg" x2="1280" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#0A1A21"/><stop offset=".55" stop-color="#0D252B"/><stop offset="1" stop-color="#102E32"/></linearGradient>
+<radialGradient id="halo"><stop stop-color="#6CDBBE" stop-opacity=".16"/><stop offset="1" stop-color="#6CDBBE" stop-opacity="0"/></radialGradient>
+<linearGradient id="tile" x2="1024" y2="1024" gradientUnits="userSpaceOnUse"><stop stop-color="#294F52"/><stop offset="1" stop-color="#0B2734"/></linearGradient>
+<linearGradient id="ribbon" x2="800" y2="800" gradientUnits="userSpaceOnUse"><stop stop-color="#DDFFE5"/><stop offset=".55" stop-color="#A2EFCC"/><stop offset="1" stop-color="#46BDA5"/></linearGradient>
+<linearGradient id="paper" x2="230" y2="290" gradientUnits="userSpaceOnUse"><stop stop-color="#F2FFF9"/><stop offset="1" stop-color="#CBE8DD"/></linearGradient>
+<linearGradient id="menu" x2="310" y2="245" gradientUnits="userSpaceOnUse"><stop stop-color="#1D4248"/><stop offset="1" stop-color="#102D35"/></linearGradient>
+<filter id="shadow" x="-40%" y="-40%" width="190%" height="200%"><feDropShadow dy="18" stdDeviation="20" flood-color="#031217" flood-opacity=".3"/></filter>
+<clipPath id="canvas"><rect width="1280" height="640" rx="28"/></clipPath>
+<style>.sans{font-family:"PingFang SC","Helvetica Neue",Arial,sans-serif}.mono{font-family:Menlo,"DejaVu Sans Mono",monospace}</style>
+</defs>
+<g clip-path="url(#canvas)">
+<rect width="1280" height="640" rx="28" fill="url(#bg)"/>
+<ellipse cx="1020" cy="240" rx="520" ry="480" fill="url(#halo)"/>
+<circle cx="1055" cy="300" r="280" stroke="#A5EAD8" stroke-opacity=".045"/>
+<circle cx="1055" cy="300" r="330" stroke="#A5EAD8" stroke-opacity=".035"/>
+<g transform="translate(57 43) scale(.072)">
+<rect x="96" y="96" width="832" height="832" rx="188" fill="url(#tile)" stroke="#8ED8C4" stroke-opacity=".25" stroke-width="3"/>
+<g transform="translate(0 1024) scale(1 -1)">
+<path fill-rule="evenodd" d="M768 528a256 256 0 1 1-512 0 256 256 0 0 1 512 0Zm-109 0a147 147 0 1 0-294 0 147 147 0 0 0 294 0Z" fill="url(#ribbon)"/>
+<path d="m548 398 144-156h111L651 410Z" fill="#247C70"/>
+<path d="M536 444c8 14 22 17 32 8l226-171c12-10 8-24-5-24h-89c-10 0-18 4-26 12L535 413c-9 9-7 20 1 31Z" fill="url(#ribbon)"/>
+</g></g>
+<text class="sans" x="147" y="82" fill="#E8FFF5" font-size="27" font-weight="600">轻右</text>
+<text class="mono" x="148" y="107" fill="#8ABCB5" font-size="11" letter-spacing="3.5">QINGYOU</text>
+<text class="mono" x="66" y="182" fill="#79C6B3" font-size="12" letter-spacing="3">A LITTLE MORE FLOW.</text>
+<text class="sans" x="59" y="280" fill="#F0FFF8" font-size="76" font-weight="600" letter-spacing="-2">文件之间，</text>
+<text class="sans" x="59" y="374" fill="#A9EBD2" font-size="76" font-weight="600" letter-spacing="-2">一切顺手。</text>
+<text class="sans" x="65" y="425" fill="#A4C5BE" font-size="20">新建文档 · 拷贝路径 · 图片与 PDF</text>
+<g class="mono" font-size="11" letter-spacing="1">
+<rect x="65" y="476" width="164" height="34" rx="17" fill="#173B39" stroke="#3F6D60"/>
+<circle cx="83" cy="493" r="3" fill="#A5F1CF"/>
+<text x="96" y="497" fill="#C4F1DD">NATIVE macOS</text>
+<rect x="241" y="476" width="168" height="34" rx="17" fill="#153038" stroke="#325258"/>
+<text x="262" y="497" fill="#ACD4CD">LOCAL PROCESSING</text>
+</g>
+<path d="M66 554h484" stroke="#98D5C8" stroke-opacity=".15"/>
+<text class="mono" x="66" y="584" fill="#719D96" font-size="11" letter-spacing="1.4">FREE &amp; OPEN SOURCE</text>
+<text class="mono" x="550" y="584" text-anchor="end" fill="#98B1A9" font-size="11">0.2.0 / PREVIEW</text>
+<g transform="translate(801 91) rotate(12 115 150)" filter="url(#shadow)">
+<rect width="230" height="296" rx="21" fill="#A7D1C0" fill-opacity=".75" stroke="#D1F1DF" stroke-opacity=".35"/>
+<rect x="24" y="24" width="52" height="26" rx="7" fill="#446D65"/>
+<text class="mono" x="50" y="42" text-anchor="middle" fill="#D9F5E5" font-size="11">PDF</text>
+<path d="M26 83h156M26 102h127M26 121h145" stroke="#719C8C" stroke-width="7" stroke-linecap="round"/>
+<rect x="25" y="157" width="180" height="90" rx="9" fill="#D2EBDF" fill-opacity=".7"/>
+<path d="M44 221 80 190l32 17 47-33 28 47" stroke="#7EA995" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(690 121) rotate(-9 115 150)" filter="url(#shadow)">
+<rect width="230" height="296" rx="21" fill="url(#paper)"/>
+<path d="M28 32h37l15 15v47H28Z" fill="#D4EBDF" stroke="#5E9984" stroke-width="2"/>
+<path d="M65 33v15h14M39 66h28M39 78h20" stroke="#5E9984" stroke-width="2" stroke-linecap="round"/>
+<text class="sans" x="26" y="139" fill="#183F39" font-size="24" font-weight="600">Notes.md</text>
+<text class="mono" x="27" y="165" fill="#709B8A" font-size="10" letter-spacing="1.4">THE NEXT SMALL IDEA.</text>
+<path d="M28 198h169M28 220h137M28 242h158" stroke="#A5CABB" stroke-width="8" stroke-linecap="round"/>
+</g>
+<g transform="translate(841 291)" filter="url(#shadow)">
+<rect width="330" height="239" rx="22" fill="url(#menu)" stroke="#49706D"/>
+<text class="mono" x="25" y="34" fill="#7CAD9F" font-size="10" letter-spacing="2.5">ONE RIGHT CLICK.</text>
+<rect x="13" y="51" width="304" height="49" rx="11" fill="#A6EED1" fill-opacity=".13"/>
+<g stroke="#BAEED9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+<path d="M30 65h13l7 7v16H30Z M43 65v8h7 M35 80h10 M40 75v10"/>
+<path d="M35 121h14v17H35Z M30 134v-18h14"/>
+<path d="M31 170h13v19H31Z M39 165h13v19"/>
+<path d="m294 71 5 5-5 5"/>
+</g>
+<text class="sans" x="65" y="82" fill="#E1FFF0" font-size="17" font-weight="500">新建文件</text>
+<text class="sans" x="65" y="134" fill="#D2EBE0" font-size="17">拷贝路径</text>
+<text class="sans" x="65" y="185" fill="#D2EBE0" font-size="17">合并 PDF…</text>
+<path d="M25 204h280" stroke="#88B7A8" stroke-opacity=".2"/>
+<text class="sans" x="25" y="224" fill="#84ADA1" font-size="10">文件留在本机，操作就在手边。</text>
+</g>
+<path d="m1122 458 1 97 25-26 24 46 20-11-24-45 34-4Z" fill="#B8F8D7" stroke="#153B3B" stroke-width="5" stroke-linejoin="round"/>
+<path d="M666 139h12m-6-6v12M1173 192h12m-6-6v12" stroke="#75BDA8" stroke-width="2" stroke-linecap="round" opacity=".45"/>
+<circle cx="715" cy="487" r="4" fill="#83E4BF" opacity=".5"/>
+<text class="mono" x="1165" y="605" text-anchor="end" fill="#719C91" font-size="10" letter-spacing="2">BUILT FOR FINDER.</text>
+<rect x=".5" y=".5" width="1279" height="639" rx="27.5" stroke="#D3FFEC" stroke-opacity=".1"/>
+</g></svg>
