@@ -6,12 +6,13 @@
     <key>CFBundleDisplayName</key><string>轻右</string>
     <key>CFBundleExecutable</key><string>QingYou</string>
     <key>CFBundlePackageType</key><string>APPL</string>
-    <key>CFBundleShortVersionString</key><string>0.2.0</string>
-    <key>CFBundleVersion</key><string>2</string>
+    <key>CFBundleShortVersionString</key><string>0.2.1</string>
+    <key>CFBundleVersion</key><string>5</string>
     <key>LSMinimumSystemVersion</key><string>13.0</string>
     <key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
     <key>CFBundleIconFile</key><string>AppIcon</string>
     <key>NSPrincipalClass</key><string>NSApplication</string>
+    <key>LSUIElement</key><true/>
     <key>NSHighResolutionCapable</key><true/>
     <key>NSHumanReadableCopyright</key><string>Copyright © 2026 QingYou contributors. MIT License.</string>
     <key>CFBundleDocumentTypes</key><array><dict>

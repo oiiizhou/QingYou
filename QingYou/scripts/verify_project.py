@@ -13,6 +13,7 @@ source = (root / "Sources/Core/Configuration.swift").read_text()
 version = re.search(r'static let version = "([^"]+)"', source).group(1)
 assert app["CFBundleShortVersionString"] == extension["CFBundleShortVersionString"] == version
 assert app["CFBundleVersion"] == extension["CFBundleVersion"]
+assert app.get("LSUIElement") is True, "主程序应以后台辅助应用身份启动，避免右键操作闪现 Dock 图标"
 assert extension["CFBundleIdentifier"].startswith(app["CFBundleIdentifier"] + ".")
 assert extension["NSExtension"]["NSExtensionPointIdentifier"] == "com.apple.FinderSync"
 if os.environ.get("GITHUB_REF_TYPE") == "tag":

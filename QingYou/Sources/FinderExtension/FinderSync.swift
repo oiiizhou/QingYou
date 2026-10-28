@@ -110,24 +110,26 @@ final class QingYouFinderSync: FIFinderSync {
                     item("恢复默认图标", .resetIcon, group)
                 }
             case .image:
-                item("调整图片…", .imageResize, menu)
-                item("图片信息…", .imageInfo, menu)
-                item("图片合并为 PDF…", .imagesPDF, menu)
+                let group = submenu("图片处理", symbol: "photo", in: menu)
+                item("调整图片…", .imageResize, group)
+                item("图片信息…", .imageInfo, group)
+                item("图片合并为 PDF…", .imagesPDF, group)
                 if allImages {
-                    let group = submenu("图片工具", symbol: "photo", in: menu)
+                    group.addItem(.separator())
                     item("转换为 PNG", .imagePNG, group)
                     item("转换为 JPEG", .imageJPEG, group)
                     item("识别文字并存为 TXT", .imageOCR, group)
                 }
             case .pdf:
-                // 两个入口始终可见；有效选区直接带入，否则由主程序选择 PDF。
-                item("合并 PDF…", .pdfMerge, root)
-                item("拆分 PDF…", .pdfSplit, root)
-                item("压缩 PDF…", .pdfCompress, root)
-                item("整理 PDF 页面…", .pdfOrganize, root)
-                let exports = submenu("导出 PDF", symbol: "square.and.arrow.up", in: root)
-                item("导出为图片…", .pdfImages, exports)
-                item("提取文字…", .pdfText, exports)
+                // 分类始终可见；所有 PDF 操作只展开一层，空白处仍可随后选择文件。
+                let group = submenu("PDF 处理", symbol: "doc.richtext", in: menu)
+                item("合并 PDF…", .pdfMerge, group)
+                item("拆分 PDF…", .pdfSplit, group)
+                item("压缩 PDF…", .pdfCompress, group)
+                item("整理 PDF 页面…", .pdfOrganize, group)
+                group.addItem(.separator())
+                item("导出为图片…", .pdfImages, group)
+                item("提取文字…", .pdfText, group)
             }
         }
         return root
@@ -196,6 +198,7 @@ final class QingYouFinderSync: FIFinderSync {
             let options = NSWorkspace.OpenConfiguration()
             options.activates = false
             options.addsToRecentItems = false
+            options.arguments = [Product.finderLaunchArgument]
             NSWorkspace.shared.open([url], withApplicationAt: host, configuration: options) { _, error in
                 if let error { self.logger.error("主程序启动失败：\(error.localizedDescription, privacy: .public)") }
             }

@@ -438,7 +438,7 @@ struct SettingsView: View {
             }
             card {
                 Toggle("将功能收纳到「轻右」子菜单", isOn: $store.configuration.useSubmenu)
-                Text("关闭后，功能组直接显示在 Finder 右键菜单中。").font(.caption).foregroundStyle(.secondary)
+                Text("关闭后，常用操作直接显示；图片与 PDF 功能按分类展开。").font(.caption).foregroundStyle(.secondary)
             }
             card {
                 ForEach(Array(store.configuration.menuItems.enumerated()), id: \.element.id) { index, item in

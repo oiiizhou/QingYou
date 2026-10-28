@@ -177,6 +177,21 @@ struct AppIntegrationTests {
             event.setParam(NSAppleEventDescriptor(enumCode: OSType(keyAELaunchedAsLogInItem)), forKeyword: AEKeyword(keyAEPropData))
             try require(LoginItemController.isLoginLaunch(event), "未识别登录事件")
         }
+        try test("Finder 冷启动不等待请求到达，登录与文档启动也不误开主窗口") {
+            let event = NSAppleEventDescriptor(eventClass: AEEventClass(kCoreEventClass),
+                eventID: AEEventID(kAEOpenApplication), targetDescriptor: nil,
+                returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
+            try require(ApplicationLaunch.showsSettings(arguments: [], event: nil), "直接启动未保留主窗口入口")
+            try require(ApplicationLaunch.showsSettings(arguments: [], event: event), "普通打开未显示主窗口")
+            try require(!ApplicationLaunch.showsSettings(arguments: [Product.finderLaunchArgument], event: nil), "请求尚未到达时误开主窗口")
+            try require(!ApplicationLaunch.showsSettings(arguments: [Product.finderLaunchArgument], event: event), "Finder 启动被普通事件覆盖")
+            let document = NSAppleEventDescriptor(eventClass: AEEventClass(kCoreEventClass),
+                eventID: AEEventID(kAEOpenDocuments), targetDescriptor: nil,
+                returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
+            try require(!ApplicationLaunch.showsSettings(arguments: [], event: document), "文档启动误开主窗口")
+            event.setParam(NSAppleEventDescriptor(enumCode: OSType(keyAELaunchedAsLogInItem)), forKeyword: AEKeyword(keyAEPropData))
+            try require(!ApplicationLaunch.showsSettings(arguments: [], event: event), "登录启动误开主窗口")
+        }
         try test("默认申请仅一次，手动关闭和失败不会在下次启动时被覆盖") {
             testDefaults.removePersistentDomain(forName: defaultsDomain)
             let service = FakeLoginItemService()

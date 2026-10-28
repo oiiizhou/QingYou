@@ -19,7 +19,7 @@
   <img src="docs/assets/badge-macos.svg" alt="macOS 13+">
   <img src="docs/assets/badge-swift.svg" alt="Swift 与 SwiftUI">
   <img src="docs/assets/badge-license.svg" alt="MIT 开源许可">
-  <img src="docs/assets/badge-version.svg" alt="0.2.0 开发预览版">
+  <img src="docs/assets/badge-version.svg" alt="0.2.1 预览版">
 </p>
 
 <p align="center">
@@ -33,7 +33,7 @@
 </p>
 
 <p align="center">
-  <strong>0.2.0 开发预览</strong> · 2026-10-26<br>
+  <strong>0.2.1 预览</strong> · 2026-10-28<br>
   <sub>免费使用 · MIT 开源 · 无需账号 · 本机处理</sub>
 </p>
 
@@ -43,7 +43,7 @@
       <td align="center" width="200"><h3>9 类</h3><sub>右键功能</sub></td>
       <td align="center" width="200"><h3>13 种</h3><sub>文件模板</sub></td>
       <td align="center" width="200"><h3>12 项</h3><sub>媒体工具</sub></td>
-      <td align="center" width="200"><h3>97 项</h3><sub>检查通过</sub></td>
+      <td align="center" width="200"><h3>98 项</h3><sub>检查通过</sub></td>
     </tr>
   </table>
 </div>
@@ -100,7 +100,13 @@
 
 ### 安装与启用
 
-**当前状态：源码已公开，本地已生成 0.2.0 通用测试包，GitHub Releases 尚未发布该安装包。** 现在可以[从源码构建](#build)；安装包发布后，在 [Releases](https://github.com/oiiizhou/QingYou/releases) 的 **Assets** 中下载 `.dmg`，即可按下面的步骤安装。
+**下载 0.2.1 预览版**：包含 Apple Silicon 与 Intel 两种架构，推荐选择 DMG。
+
+<p align="center">
+  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.1/QingYou-0.2.1.dmg"><strong>下载 DMG</strong></a> ·
+  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.1/QingYou-0.2.1.zip">ZIP 备用包</a> ·
+  <a href="https://github.com/oiiizhou/QingYou/releases/tag/preview-0.2.1">更新说明与校验值</a>
+</p>
 
 1. 打开 DMG，将 **QingYou.app** 拖入「应用程序」。
 2. 启动轻右，点击首页 **“管理扩展”**，按系统引导开启轻右 Finder 扩展。
@@ -122,9 +128,11 @@
 | 文件模板 | 模板名称、启用状态、自定义模板与 WPS 打开偏好 |
 | 通用设置 | 登录启动、新建后打开或编辑名称、重名策略与反馈 |
 
-默认直接显示右键功能，也可收纳到“轻右”子菜单。生效范围默认为用户主目录与 `/Volumes`，包含子目录；未启用扩展时，工具箱仍可独立使用。
+常用操作默认直接显示，图片与 PDF 功能分别收纳到“图片处理”和“PDF 处理”二级菜单；也可把全部入口收纳到“轻右”子菜单。生效范围默认为用户主目录与 `/Volumes`，包含子目录；未启用扩展时，工具箱仍可独立使用。
 
 首次运行默认申请登录启动，只申请一次；手动关闭后不再自动开启。登录启动驻留菜单栏，普通打开显示主窗口。
+
+右键任务及图片、PDF 工具窗口以后台辅助应用身份运行，不额外显示 Dock 图标。主动打开轻右主窗口时显示 Dock 图标，关闭主窗口后继续驻留菜单栏。
 
 <details>
 <summary>常用快捷键</summary>
@@ -167,7 +175,7 @@
 
 六种 Office 模板是真实的文档格式，随源码提供；日常构建不依赖 Office 或 WPS。检测到 WPS 时，默认优先用它打开新建办公文档，仅设置当前文件的打开关联。
 
-右键新建演示文稿会直接得到 `未命名.pptx`；重名时为 `未命名 2.pptx`。文件在 Finder 中选中后，按 **Return** 使用系统改名。自动进入名称编辑已接入，当前构建完整交互仍待复测，见[已知限制](#limits)。
+右键新建演示文稿会直接得到 `未命名.pptx`；重名时为 `未命名 2.pptx`。授权辅助功能后，会尝试直接进入 Finder 的名称编辑；0.2.1 已实测 TXT 与 PPTX。未授权或无法确认所选文件时保留选中状态，按 **Return** 即可改名。
 
 自定义模板支持启用、排序和命名；文字模板支持 `{{name}}`、`{{date}}` 占位符。
 
@@ -177,7 +185,7 @@
 
 ## 🎨 图片处理
 
-在 Finder 右键选择 **“调整图片…”**，选中的图片会直接带入；没有适用选区时，通过系统文件选择器添加。多张图片可以使用同一套参数批量处理。
+在 Finder 右键选择 **“图片处理 → 调整图片…”**，选中的图片会直接带入；没有适用选区时，通过系统文件选择器添加。多张图片可以使用同一套参数批量处理。
 
 ### 尺寸与格式
 
@@ -213,7 +221,7 @@
 
 ## 📄 PDF 工作台
 
-**合并、拆分、压缩、整理页面**直接展示在 Finder 右键菜单中；图片与文字导出位于“导出 PDF”。空白处也能打开入口，再选择所需文件。
+在 Finder 右键展开 **“PDF 处理”**，即可选择合并、拆分、压缩、整理页面、导出图片或提取文字。六项工具都在第二层，无需再展开“导出 PDF”。空白处也有分类入口，可以随后选择文件。
 
 | 工具 | 主要能力 | 默认结果 |
 | :--- | :--- | :--- |
@@ -358,14 +366,14 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 
 ## ✅ 验证与版本状态
 
-**0.2.0 是开发预览版。** 下列结果来自 2026-10-26 的本地记录，不代表 GitHub CI 或其他电脑已经通过验收。
+**0.2.1 是预览版。** 2026-10-28 在 Apple Silicon / macOS 26.3 重新通过 98 项自动化检查。下表汇总本轮与此前的实机记录；其他设备的覆盖范围见已知限制。云端结果请查看 [GitHub Actions](https://github.com/oiiizhou/QingYou/actions)。
 
 | 自动化检查 | 数量 |
 | :--- | ---: |
 | 核心与媒体处理 | 57 |
-| 应用集成 | 23 |
+| 应用集成 | 24 |
 | 新工作台 | 17 |
-| **合计** | **97 项通过** |
+| **合计** | **98 项通过** |
 
 <details>
 <summary>已完成的本地验收</summary>
@@ -377,8 +385,9 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 | PDF 输出 | 两图 B→A 合成、页面重排／删除／旋转、压缩后页数与文字保持 |
 | 范围导出 | `3,1` 的文件名、144 DPI 图片、TXT 顺序正确 |
 | 扫描页 OCR | 无文字层的自制英文扫描 PDF 成功识别，不代表复杂文档准确率 |
-| 原生交互 | 明暗与紧凑窗口、错误输入、真实 Finder 入口、输入框聚焦时 ⌘W |
-| 安装与打包 | 主程序与扩展匹配、严格签名校验、设置保留；通用 DMG／ZIP 校验通过 |
+| 原生交互 | 明暗与紧凑窗口、错误输入、真实 Finder 入口、后台工具窗口 ⌘W、授权后自动改名 |
+| 后台与升级 | 右键任务保持后台身份，主窗口关闭后回到后台；升级后扩展持续运行 |
+| 安装与打包 | DMG 只读挂载、ZIP 解压、双架构、严格签名与 SHA-256；程序逐文件匹配 |
 
 </details>
 
@@ -386,7 +395,7 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 
 ### 已知限制
 
-- **交互**：新图片／页面列表拖动与自动进入文件名编辑仍待实机复测，请先使用上下箭头与 **Return**。原有 PDF 合并列表有独立的历史拖动验证记录。
+- **交互**：新图片／页面列表拖动仍需更多桌面验证，请先用上下箭头。自动改名依赖可选的辅助功能权限；开发签名更新后可能需要重新授权，未授权时可按 **Return**。原有 PDF 合并列表有独立的历史拖动验证记录。
 - **设备覆盖**：Intel、较早 macOS、外接盘、网络盘、大文件、多显示器与完整辅助功能组合仍需补测；终端服务的权限提示与不同系统语言也需更多设备验证。
 - **分发**：尚无 Developer ID 签名、Apple 公证及另一台 Mac 的完整下载安装验证。
 - **格式边界**：PDF 重写可能影响书签、表单或签名；调整与合成工作台拒绝多帧图片，旧的一键 PNG／JPEG 转换仅处理首帧且不保留全部元数据。
@@ -400,7 +409,7 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 <details>
 <summary><strong>GitHub 下载的 ZIP 为什么不能直接安装？</strong></summary>
 
-“Code → Download ZIP”和 Release 的“Source code”是源码，需要先构建。普通用户请在 [Releases](https://github.com/oiiizhou/QingYou/releases) 的 Assets 中选择项目发布的 DMG；当前安装包尚待上传。ZIP 安装包的名称会包含版本与架构信息，不是自动生成的源码归档。
+“Code → Download ZIP”和 Release 的“Source code”是源码，需要先构建。普通用户请在 [Releases](https://github.com/oiiizhou/QingYou/releases) 的 Assets 中选择项目发布的 DMG；0.2.1 对应 `QingYou-0.2.1.dmg` 或 `QingYou-0.2.1.zip`，均包含双架构应用。
 
 </details>
 

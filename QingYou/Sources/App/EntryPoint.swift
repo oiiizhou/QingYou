@@ -26,7 +26,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
     private var processedRequests = Set<UUID>()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        let launchedAtLogin = LoginItemController.isLoginLaunch(NSAppleEventManager.shared().currentAppleEvent)
+        let showsSettingsOnLaunch = ApplicationLaunch.showsSettings(
+            arguments: ProcessInfo.processInfo.arguments,
+            event: NSAppleEventManager.shared().currentAppleEvent)
         NSApp.applicationIconImage = QingYouStyle.icon
         createMainMenu()
         store.loginItem.applyDefaultIfNeeded()
@@ -49,8 +51,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         item.menu = menu
         statusItem = item
         // 登录项和扩展启动保持安静；用户直接打开应用时才显示设置窗口。
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
-            guard let self, !self.receivedRequest, !launchedAtLogin else { return }
+        DispatchQueue.main.async { [weak self] in
+            guard let self, !self.receivedRequest, showsSettingsOnLaunch else { return }
             self.showSettings()
         }
     }
@@ -93,9 +95,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         if let model = utilityModels.removeValue(forKey: ObjectIdentifier(window)) {
             model.stopPreview(); utilityWindows.removeAll { $0 === window }
         }
-        // 关闭通知到达时窗口仍可能标记为可见，要排除正在关闭的这一扇。
-        let remainingWindows = [settingsWindow, renameWindow].compactMap { $0 } + pdfWindows + utilityWindows
-        if !remainingWindows.contains(where: { $0 !== window && $0.isVisible }) {
+        // Dock 只跟随用户主动打开的主窗口；工具窗口还开着时也能回到后台身份。
+        if window === settingsWindow {
             NSApp.setActivationPolicy(.accessory)
         }
     }
@@ -142,7 +143,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
             else { NSWorkspace.shared.activateFileViewerSelecting(outputs) }
         }
         utilityModels[ObjectIdentifier(window)] = model; utilityWindows.append(window)
-        window.center(); NSApp.setActivationPolicy(.regular); window.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true)
+        window.center()
+        presentTaskWindow(window)
     }
 
     private func showPDF(_ mode: PDFWorkspaceMode, urls: [URL], directory: URL) {
@@ -172,9 +174,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         pdfModels[ObjectIdentifier(window)] = model
         pdfWindows.append(window)
         window.center()
-        NSApp.setActivationPolicy(.regular)
-        window.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
+        presentTaskWindow(window)
     }
     @objc private func showSettings() {
         if settingsWindow == nil {
@@ -215,10 +215,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
             window?.close()
         }, cancel: { [weak window] in window?.close() }))
         window.center()
-        NSApp.setActivationPolicy(.regular)
+        presentTaskWindow(window)
+        renameWindow = window
+    }
+    private func presentTaskWindow(_ window: NSWindow) {
+        // accessory 应用仍可接收输入和显示工具窗口，不必为此加入 Dock。
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
-        renameWindow = window
     }
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()

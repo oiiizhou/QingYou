@@ -38,7 +38,9 @@ jobs:
         run: ARCHS="arm64 x86_64" bash scripts/build.sh
       - name: Package
         working-directory: ${{ steps.project.outputs.directory }}
-        run: bash scripts/package.sh
+        run: |
+          bash scripts/package.sh
+          python3 scripts/verify_package.py
       - uses: actions/upload-artifact@v4
         with:
           name: QingYou-macOS

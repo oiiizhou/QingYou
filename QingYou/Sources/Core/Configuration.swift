@@ -3,10 +3,11 @@ import Darwin
 
 enum Product {
     static let name = "轻右"
-    static let version = "0.2.0"
+    static let version = "0.2.1"
     static let bundleID = "io.github.qingyou.app"
     static let extensionID = "io.github.qingyou.app.finder"
     static let configurationChanged = "io.github.qingyou.configurationChanged"
+    static let finderLaunchArgument = "--finder-request"
 
     // 扩展中的 NSHomeDirectory 指向沙盒；配置目录需要使用真实用户目录。
     static var userHome: URL {
@@ -45,8 +46,8 @@ enum MenuFeature: String, Codable, CaseIterable, Identifiable {
         case .rename: return "批量重命名"
         case .visibility: return "隐藏与显示"
         case .folderIcon: return "文件夹图标"
-        case .image: return "图片工具"
-        case .pdf: return "PDF 工具"
+        case .image: return "图片处理"
+        case .pdf: return "PDF 处理"
         case .checksum: return "SHA-256 校验"
         case .project: return "创建项目目录"
         }
