@@ -22,3 +22,9 @@ xcrun swiftc -swift-version 5 -target "$(uname -m)-apple-macosx13.0" -sdk "$(xcr
     Sources/Core/*.swift "${APP_SOURCES[@]}" Tests/WorkspaceTests.swift \
     -o build/tests/QingYouWorkspaceTests
 build/tests/QingYouWorkspaceTests
+
+# 实际菜单、跨进程标识及图标体积回归，使用隔离配置与临时文件。
+xcrun swiftc -swift-version 5 -target "$(uname -m)-apple-macosx13.0" -sdk "$(xcrun --show-sdk-path)" \
+    Sources/Core/*.swift Sources/FinderExtension/*.swift Tests/FinderMenuTests.swift \
+    -o build/tests/QingYouFinderTests
+build/tests/QingYouFinderTests

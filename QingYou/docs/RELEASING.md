@@ -1,6 +1,6 @@
 # GitHub 上传与发布
 
-更新：2026-10-28。源码仓库：[oiiizhou/QingYou](https://github.com/oiiizhou/QingYou)。当前预览版为 **0.2.1 / build 5**，安装包位于 [preview-0.2.1](https://github.com/oiiizhou/QingYou/releases/tag/preview-0.2.1)；上一版 `preview-0.2.0` 保留下载。
+更新：2026-10-29。源码仓库：[oiiizhou/QingYou](https://github.com/oiiizhou/QingYou)。当前预览版为 **0.2.2 / build 7**，安装包位于 [preview-0.2.2](https://github.com/oiiizhou/QingYou/releases/tag/preview-0.2.2)；上一版 `preview-0.2.1` 保留下载。
 
 源码通过 Git 提交，应用安装包通过 **Releases** 分发。DMG、ZIP、构建日志、用户配置和签名材料不提交到源码仓库。
 
@@ -34,8 +34,8 @@ python3 scripts/verify_package.py
 
 | 文件 | 用途 |
 | --- | --- |
-| `dist/QingYou-0.2.1.dmg` | 推荐安装包，包含应用程序目录入口及中文安装说明 |
-| `dist/QingYou-0.2.1.zip` | 同一应用的备用 ZIP |
+| `dist/QingYou-0.2.2.dmg` | 推荐安装包，包含应用程序目录入口及中文安装说明 |
+| `dist/QingYou-0.2.2.zip` | 同一应用的备用 ZIP |
 | `dist/SHA256SUMS.txt` | 两个安装包的 SHA-256 |
 | `docs/安装说明.txt` | 可作为独立附件，上传时可命名为 `INSTALL.txt` |
 
@@ -52,7 +52,7 @@ git status --short
 git diff --check
 git add README.md .github QingYou
 git diff --cached --stat
-git commit -m "Release QingYou 0.2.1 preview"
+git commit -m "Release QingYou 0.2.2 preview"
 git push origin main
 ```
 
@@ -62,12 +62,12 @@ git push origin main
 
 ## 4. 上传并发布
 
-手动发布使用 **`preview-0.2.1`**，指向已经验证的准确提交，不覆盖旧版。该标签不会触发 `v*` 自动发布，避免两份 Release 竞争。
+手动发布使用 **`preview-0.2.2`**，指向已经验证的准确提交，不覆盖旧版。该标签不会触发 `v*` 自动发布，避免两份 Release 竞争。
 
 ### 网页操作
 
 1. 打开 [新建 Release](https://github.com/oiiizhou/QingYou/releases/new)。
-2. 创建 `preview-0.2.1`，Target 选择已验证的提交；标题填写「轻右 0.2.1 · 菜单更清爽，任务留在后台」。
+2. 创建 `preview-0.2.2`，Target 选择已验证的提交；标题填写「轻右 0.2.2 · 右键更快，操作更顺手」。
 3. 将 [RELEASE_NOTES.md](RELEASE_NOTES.md) 的内容填入发布说明。
 4. 在 **Attach binaries** 中上传 DMG、ZIP、SHA256SUMS.txt 和安装说明，等待附件上传完成。
 5. 选择 **Pre-release**。先保存草稿，核对版本和附件，再发布。
@@ -80,15 +80,15 @@ git push origin main
 
 ```bash
 cp QingYou/docs/安装说明.txt QingYou/dist/INSTALL.txt
-gh release create preview-0.2.1 \
+gh release create preview-0.2.2 \
   --target "$(git rev-parse HEAD)" --draft --prerelease \
-  --title "轻右 0.2.1 · 菜单更清爽，任务留在后台" \
+  --title "轻右 0.2.2 · 右键更快，操作更顺手" \
   --notes-file QingYou/docs/RELEASE_NOTES.md \
-  QingYou/dist/QingYou-0.2.1.dmg QingYou/dist/QingYou-0.2.1.zip \
+  QingYou/dist/QingYou-0.2.2.dmg QingYou/dist/QingYou-0.2.2.zip \
   QingYou/dist/SHA256SUMS.txt QingYou/dist/INSTALL.txt
 
 # 核对草稿附件、标签和提交后公开发布
-gh release edit preview-0.2.1 --draft=false
+gh release edit preview-0.2.2 --draft=false
 ```
 
 发布后重新下载附件，对照 SHA256SUMS.txt，确认 README 下载链接可访问。GitHub 自动附带的 **Source code (zip / tar.gz)** 是源码，不是应用安装包。

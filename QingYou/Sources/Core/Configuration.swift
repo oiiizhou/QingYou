@@ -3,7 +3,7 @@ import Darwin
 
 enum Product {
     static let name = "轻右"
-    static let version = "0.2.1"
+    static let version = "0.2.2"
     static let bundleID = "io.github.qingyou.app"
     static let extensionID = "io.github.qingyou.app.finder"
     static let configurationChanged = "io.github.qingyou.configurationChanged"

@@ -21,7 +21,7 @@
   <img src="QingYou/docs/assets/badge-macos.svg" alt="macOS 13+">
   <img src="QingYou/docs/assets/badge-swift.svg" alt="Swift 与 SwiftUI">
   <img src="QingYou/docs/assets/badge-license.svg" alt="MIT 开源许可">
-  <img src="QingYou/docs/assets/badge-version.svg" alt="0.2.1 预览版">
+  <img src="QingYou/docs/assets/badge-version.svg" alt="0.2.2 预览版">
 </p>
 
 <p align="center">
@@ -35,7 +35,7 @@
 </p>
 
 <p align="center">
-  <strong>0.2.1 预览</strong> · 2026-10-28<br>
+  <strong>0.2.2 预览</strong> · 2026-10-29<br>
   <sub>免费使用 · MIT 开源 · 无需账号 · 本机处理</sub>
 </p>
 
@@ -45,10 +45,12 @@
       <td align="center" width="200"><h3>9 类</h3><sub>右键功能</sub></td>
       <td align="center" width="200"><h3>13 种</h3><sub>文件模板</sub></td>
       <td align="center" width="200"><h3>12 项</h3><sub>媒体工具</sub></td>
-      <td align="center" width="200"><h3>98 项</h3><sub>检查通过</sub></td>
+      <td align="center" width="200"><h3>106 项</h3><sub>检查通过</sub></td>
     </tr>
   </table>
 </div>
+
+> **0.2.2 更新：右键响应提速。** 同机本地优化构建连续右键 6 次，中位数从约 248 ms 降至 76 ms；图标尺寸与缓存、配置读取及菜单传输一并优化。测量条件与覆盖范围见[验证记录](QingYou/docs/VERIFICATION.md)。
 
 ## ✨ 关于轻右
 
@@ -102,12 +104,12 @@
 
 ### 安装与启用
 
-**下载 0.2.1 预览版**：包含 Apple Silicon 与 Intel 两种架构，推荐选择 DMG。
+**下载 0.2.2 预览版**：包含 Apple Silicon 与 Intel 两种架构，推荐选择 DMG。
 
 <p align="center">
-  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.1/QingYou-0.2.1.dmg"><strong>下载 DMG</strong></a> ·
-  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.1/QingYou-0.2.1.zip">ZIP 备用包</a> ·
-  <a href="https://github.com/oiiizhou/QingYou/releases/tag/preview-0.2.1">更新说明与校验值</a>
+  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.2/QingYou-0.2.2.dmg"><strong>下载 DMG</strong></a> ·
+  <a href="https://github.com/oiiizhou/QingYou/releases/download/preview-0.2.2/QingYou-0.2.2.zip">ZIP 备用包</a> ·
+  <a href="https://github.com/oiiizhou/QingYou/releases/tag/preview-0.2.2">更新说明与校验值</a>
 </p>
 
 1. 打开 DMG，将 **QingYou.app** 拖入「应用程序」。
@@ -177,7 +179,7 @@
 
 六种 Office 模板是真实的文档格式，随源码提供；日常构建不依赖 Office 或 WPS。检测到 WPS 时，默认优先用它打开新建办公文档，仅设置当前文件的打开关联。
 
-右键新建演示文稿会直接得到 `未命名.pptx`；重名时为 `未命名 2.pptx`。授权辅助功能后，会尝试直接进入 Finder 的名称编辑；0.2.1 已实测 TXT 与 PPTX。未授权或无法确认所选文件时保留选中状态，按 **Return** 即可改名。
+右键新建演示文稿会直接得到 `未命名.pptx`；重名时为 `未命名 2.pptx`。授权辅助功能后，会尝试直接进入 Finder 的名称编辑；此前 0.2.1 已实测 TXT 与 PPTX。未授权或无法确认所选文件时保留选中状态，按 **Return** 即可改名。
 
 自定义模板支持启用、排序和命名；文字模板支持 `{{name}}`、`{{date}}` 占位符。
 
@@ -369,14 +371,15 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 
 ## ✅ 验证与版本状态
 
-**0.2.1 是预览版。** 2026-10-28 在 Apple Silicon / macOS 26.3 重新通过 98 项自动化检查。下表汇总本轮与此前的实机记录；其他设备的覆盖范围见已知限制。云端结果请查看 [GitHub Actions](https://github.com/oiiizhou/QingYou/actions)。
+**0.2.2 是预览版。** 2026-10-29 在 Apple Silicon / macOS 26.3 重新通过 106 项自动化检查。下表汇总本轮与此前的实机记录；其他设备的覆盖范围见已知限制。云端结果请查看 [GitHub Actions](https://github.com/oiiizhou/QingYou/actions)。
 
 | 自动化检查 | 数量 |
 | :--- | ---: |
 | 核心与媒体处理 | 57 |
 | 应用集成 | 24 |
 | 新工作台 | 17 |
-| **合计** | **98 项通过** |
+| Finder 菜单与图标回归 | 8 |
+| **合计** | **106 项通过** |
 
 <details>
 <summary>已完成的本地验收</summary>
@@ -412,7 +415,7 @@ Finder 扩展负责菜单与请求，耗时任务由主程序执行。新工作�
 <details>
 <summary><strong>GitHub 下载的 ZIP 为什么不能直接安装？</strong></summary>
 
-“Code → Download ZIP”和 Release 的“Source code”是源码，需要先构建。普通用户请在 [Releases](https://github.com/oiiizhou/QingYou/releases) 的 Assets 中选择项目发布的 DMG；0.2.1 对应 `QingYou-0.2.1.dmg` 或 `QingYou-0.2.1.zip`，均包含双架构应用。
+“Code → Download ZIP”和 Release 的“Source code”是源码，需要先构建。普通用户请在 [Releases](https://github.com/oiiizhou/QingYou/releases) 的 Assets 中选择项目发布的 DMG；0.2.2 对应 `QingYou-0.2.2.dmg` 或 `QingYou-0.2.2.zip`，均包含双架构应用。
 
 </details>
 
